@@ -14,6 +14,7 @@
 		D8A8CC901D868E3600CFE904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8A8CC8E1D868E3600CFE904 /* LaunchScreen.storyboard */; };
 		D8A8CC981D868FB300CFE904 /* WallpaperCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8CC971D868FB300CFE904 /* WallpaperCollectionViewController.swift */; };
 		D8FADD7C1D8695A300B87695 /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FADD7B1D8695A300B87695 /* temp.png */; };
+		D8FADD7E1D86B07E00B87695 /* WallpaperPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D8A8CC911D868E3600CFE904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8A8CC971D868FB300CFE904 /* WallpaperCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCollectionViewController.swift; sourceTree = "<group>"; };
 		D8FADD7B1D8695A300B87695 /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
+		D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D8A8CC8E1D868E3600CFE904 /* LaunchScreen.storyboard */,
 				D8A8CC911D868E3600CFE904 /* Info.plist */,
 				D8A8CC891D868E3600CFE904 /* RedWall.xcdatamodeld */,
+				D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */,
 			);
 			path = RedWall;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8FADD7E1D86B07E00B87695 /* WallpaperPost.swift in Sources */,
 				D8A8CC8B1D868E3600CFE904 /* RedWall.xcdatamodeld in Sources */,
 				D8A8CC981D868FB300CFE904 /* WallpaperCollectionViewController.swift in Sources */,
 				D8A8CC831D868E3600CFE904 /* AppDelegate.swift in Sources */,
