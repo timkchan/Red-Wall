@@ -10,8 +10,10 @@ import UIKit
 
 class WallpaperCollectionViewController: UICollectionViewController {
     
-    //data source
+    // Data source
+    var bank = [WallpaperPost]()
     
+    // Constrants for collection view layout
     private let leftAndRightPaddings: CGFloat = 8.0
     private let numberOfItemsPerRow: CGFloat = 2.0
     private let heightAdjustment: CGFloat = 50.0
@@ -34,10 +36,28 @@ class WallpaperCollectionViewController: UICollectionViewController {
                         if let jsonData = jsonResult["data"] as? NSDictionary {
                             if let items = jsonData["children"] as? NSArray {
                                 for item in items {
+                                    print("------------------------------------")
                                     let itemD:NSDictionary = (item as? NSDictionary)!
+                                    
+                                    // Finally get down to the post.
+                                    let post = itemD["data"] as! NSDictionary
+                                    
+                                    let id = post["id"] as! String
+                                    let author = post["author"] as! String
+                                    
+                                    let thumbnailURL = post["thumbnail"] as! String
+                                    
+                                    let imgURL = (((((post["preview"] as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
+                                    let ups = post["ups"] as! Int
+                                    let downs = post["downs"] as! Int
+                                    
+                                        
+                                    let wp = WallpaperPost(id: id, author: author, thumbnailURL: thumbnailURL, imgURL: imgURL, ups: ups, downs: downs)
+                                    
+                                    wp.toString()
 
-                                        print("------------------------------------")
-                                        print(itemD["data"] as! NSDictionary)
+                                    
+                                    self.bank.append(wp)
                                         
 
                                 }
