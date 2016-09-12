@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D88A45A51D875A20003068F2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A45A41D875A20003068F2 /* DetailViewController.swift */; };
 		D8A8CC831D868E3600CFE904 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8CC821D868E3600CFE904 /* AppDelegate.swift */; };
 		D8A8CC881D868E3600CFE904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8A8CC861D868E3600CFE904 /* Main.storyboard */; };
 		D8A8CC8B1D868E3600CFE904 /* RedWall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8A8CC891D868E3600CFE904 /* RedWall.xcdatamodeld */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D88A45A41D875A20003068F2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D8A8CC7F1D868E3600CFE904 /* RedWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A8CC821D868E3600CFE904 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8A8CC871D868E3600CFE904 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				D8A8CC971D868FB300CFE904 /* WallpaperCollectionViewController.swift */,
 				D8FADD7F1D86BFDC00B87695 /* WallpaperCollectionViewCell.swift */,
 				D8A8CC861D868E3600CFE904 /* Main.storyboard */,
+				D88A45A41D875A20003068F2 /* DetailViewController.swift */,
 				D8A8CC8C1D868E3600CFE904 /* Assets.xcassets */,
 				D8A8CC8E1D868E3600CFE904 /* LaunchScreen.storyboard */,
 				D8A8CC911D868E3600CFE904 /* Info.plist */,
@@ -167,6 +170,7 @@
 				D8A8CC8B1D868E3600CFE904 /* RedWall.xcdatamodeld in Sources */,
 				D8A8CC981D868FB300CFE904 /* WallpaperCollectionViewController.swift in Sources */,
 				D8A8CC831D868E3600CFE904 /* AppDelegate.swift in Sources */,
+				D88A45A51D875A20003068F2 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

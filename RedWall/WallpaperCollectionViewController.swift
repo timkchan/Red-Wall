@@ -123,6 +123,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
     
     private struct Storyboard {
         static let CellIdentifier = "WallpaperCell"
+        static let ShowDetailViewSegue = "ShowDetailViewSegue"
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,7 +137,16 @@ class WallpaperCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: - UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let post = bank[indexPath.row]
+        self.performSegue(withIdentifier: Storyboard.ShowDetailViewSegue, sender: post)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondVC: DetailViewController = segue.destination as! DetailViewController
+        secondVC.post = sender as! WallpaperPost
+    }
 
     
 }
