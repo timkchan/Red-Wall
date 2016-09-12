@@ -21,7 +21,7 @@
                             <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallpaperCell" id="Swo-sR-ysJ">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallpaperCell" id="Swo-sR-ysJ" customClass="WallpaperCollectionViewCell" customModule="RedWall" customModuleProvider="target">
                                 <rect key="frame" x="87.5" y="8" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -29,14 +29,45 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp.png" translatesAutoresizingMaskIntoConstraints="NO" id="dC4-Yq-3Ol"/>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeM-L7-hFj">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BXP-kh-k1e">
+                                                <frame key="frameInset"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qD0-vB-VgD">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="qD0-vB-VgD" secondAttribute="bottom" constant="4" id="2to-gR-vhP"/>
+                                                    <constraint firstItem="qD0-vB-VgD" firstAttribute="top" secondItem="BXP-kh-k1e" secondAttribute="top" constant="5" id="G0Q-4C-tMS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qD0-vB-VgD" secondAttribute="trailing" constant="16" id="SFM-b5-HAh"/>
+                                                    <constraint firstItem="qD0-vB-VgD" firstAttribute="leading" secondItem="BXP-kh-k1e" secondAttribute="leading" constant="16" id="km6-5N-5dh"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="dEG-Cm-eeg"/>
+                                            </constraints>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="dC4-Yq-3Ol" firstAttribute="leading" secondItem="Swo-sR-ysJ" secondAttribute="leading" id="1eB-pJ-c6I"/>
+                                    <constraint firstItem="BeM-L7-hFj" firstAttribute="leading" secondItem="Swo-sR-ysJ" secondAttribute="leading" id="4Md-5Z-46Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="BeM-L7-hFj" secondAttribute="trailing" id="DJU-U8-odL"/>
                                     <constraint firstItem="dC4-Yq-3Ol" firstAttribute="top" secondItem="Swo-sR-ysJ" secondAttribute="top" id="Gwi-2r-llc"/>
                                     <constraint firstAttribute="bottom" secondItem="dC4-Yq-3Ol" secondAttribute="bottom" id="J7H-Nz-gPy"/>
                                     <constraint firstAttribute="trailing" secondItem="dC4-Yq-3Ol" secondAttribute="trailing" id="LEz-8S-mGt"/>
+                                    <constraint firstAttribute="bottom" secondItem="BeM-L7-hFj" secondAttribute="bottom" id="tXc-cf-80B"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="thumbnailImageView" destination="dC4-Yq-3Ol" id="7Pi-HX-Kh7"/>
+                                    <outlet property="visualEffectView" destination="BeM-L7-hFj" id="g1A-TN-KWj"/>
+                                    <outlet property="wallpaperAuthorLabel" destination="qD0-vB-VgD" id="1zi-QJ-tWc"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -48,7 +79,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqg-kw-hVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="54"/>
+            <point key="canvasLocation" x="997.60000000000002" y="53.523238380809602"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U9e-8m-5a0">

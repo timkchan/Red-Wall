@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class WallpaperCollectionViewController: UICollectionViewController {
     
@@ -23,6 +24,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Fetch Reddit JSON content
         let sourceURL = URL(string: "https://www.reddit.com/r/wallpapers/.json")
         let task = URLSession.shared.dataTask(with: sourceURL!) { (data, response, error) in
@@ -36,7 +38,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
                         if let jsonData = jsonResult["data"] as? NSDictionary {
                             if let items = jsonData["children"] as? NSArray {
                                 for item in items {
-                                    print("------------------------------------")
+
                                     let itemD:NSDictionary = (item as? NSDictionary)!
                                     
                                     // Finally get down to the post.
@@ -44,23 +46,48 @@ class WallpaperCollectionViewController: UICollectionViewController {
                                     
                                     let id = post["id"] as! String
                                     let author = post["author"] as! String
-                                    
                                     let thumbnailURL = post["thumbnail"] as! String
-                                    
-                                    let imgURL = (((((post["preview"] as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
                                     let ups = post["ups"] as! Int
                                     let downs = post["downs"] as! Int
-                                    
+                                    let imgURL = (((((post["preview"] as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
                                         
                                     let wp = WallpaperPost(id: id, author: author, thumbnailURL: thumbnailURL, imgURL: imgURL, ups: ups, downs: downs)
                                     
-                                    wp.toString()
-
                                     
+                                    
+                                    print("------------------------------------")
+                                    wp.toString()
+                                    
+                                    
+                                    
+                                    
+//                                    let newPost = NSEntityDescription.insertNewObject(forEntityName: "Post", into: context)
+//                                    
+//                                    newPost.setValue(id, forKey: "id")
+//                                    
+//                                    do {
+//                                        try context.save()
+//                                        print("saved")
+//                                    } catch {
+//                                        print("error when saving into CoreData")
+//                                    }
+                                
                                     self.bank.append(wp)
-                                        
+                                    
+                                    
+//                                    var indexes = [IndexPath]()
+//                                    for i in 0 ..< self.bank.count {
+//                                        indexes.append(IndexPath(row: i, section: 0))
+//                                    }
+//                                    self.collectionView?.performBatchUpdates({
+//                                        self.bank.append(wp)
+//                                        self.collectionView?.insertItems(at: indexes)
+//                                        }, completion: nil)
+                                    
 
                                 }
+                                self.collectionView?.reloadData()
+                                
                             }
                         }
                     } catch {
@@ -91,7 +118,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
     
     // Number of items in each section.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30 // TK: to be modified.
+        return self.bank.count // TK: to be modified.
     }
     
     private struct Storyboard {
@@ -99,9 +126,17 @@ class WallpaperCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as! WallpaperCollectionViewCell
+        print("XXX")
+        
+        if bank.count > 0 {
+            cell.wallpaperPost = self.bank[indexPath.row]
+        }
         
         return cell
     }
+    
+    
+
     
 }
