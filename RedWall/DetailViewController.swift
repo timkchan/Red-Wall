@@ -10,8 +10,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var fullResImage: UIImage? = nil
     
     @IBOutlet weak var DetailViewImageViewController: UIImageView!
+        
+    @IBAction func saveImageBtn(_ sender: AnyObject) {
+        if fullResImage != nil {
+            UIImageWriteToSavedPhotosAlbum(fullResImage!, nil, nil, nil)
+        }
+    }
+    
     
     var post: WallpaperPost!
 
@@ -19,7 +27,16 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         title = post.author
-        DetailViewImageViewController.image = UIImage(named: "temp.png")
+        
+        
+        let url = NSURL(string: post.imgURL)
+        if let data = NSData(contentsOf:url as! URL) {
+            fullResImage = UIImage(data: data as Data)
+            DetailViewImageViewController.image = fullResImage
+        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

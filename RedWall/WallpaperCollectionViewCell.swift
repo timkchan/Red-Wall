@@ -42,13 +42,13 @@ class WallpaperCollectionViewCell: UICollectionViewCell {
         // TO-DO Update Image
         
         wallpaperAuthorLabel.text = wallpaperPost?.author
-        downloadedFrom(link: (wallpaperPost?.thumbnailURL)!, imageView: thumbnailImageView)
+        downloadedFrom(link: (wallpaperPost?.imgURL)!, imageView: thumbnailImageView)
         
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        self.layer.cornerRadius = 3.0
-//        self.clipsToBounds = true
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 3.0
+        self.clipsToBounds = true
+    }
 }

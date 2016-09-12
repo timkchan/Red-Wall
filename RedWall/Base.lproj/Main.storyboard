@@ -101,7 +101,11 @@
                                     <constraint firstAttribute="height" constant="44" id="7NU-iT-I0g"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="save" id="P5i-tU-QD9"/>
+                                    <barButtonItem systemItem="save" id="P5i-tU-QD9">
+                                        <connections>
+                                            <action selector="saveImageBtn:" destination="L3x-ez-I3h" id="6S3-fm-S2G"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Ut-cs-1wV"/>
@@ -133,6 +137,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uJa-gi-hvN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.79607850309999995" green="0.058823533359999999" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
