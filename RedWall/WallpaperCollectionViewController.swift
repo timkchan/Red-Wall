@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
+// Faved Lst
+var favedPosts = [WallpaperPost]()
+
 class WallpaperCollectionViewController: UICollectionViewController {
-    
-    // Faved posts
-    var favedPosts = [WallpaperPost]()
     
     // Data source
     var bank = [WallpaperPost]()
@@ -81,16 +81,6 @@ class WallpaperCollectionViewController: UICollectionViewController {
         
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

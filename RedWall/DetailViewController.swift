@@ -13,6 +13,14 @@ class DetailViewController: UIViewController {
     // Place holder for the corresponding wall paper post form bank (get transferred to here from segue)
     var post: WallpaperPost!
     
+    @IBAction func favAction(_ sender: AnyObject) {
+        if !favedPosts.contains(post) {
+            favedPosts.append(post)
+        }
+        dump(favedPosts)
+    }
+    
+    
     // Place holder for the wallpaper
     var fullResImage: UIImage? = nil
     

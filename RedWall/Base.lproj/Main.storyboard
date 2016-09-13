@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jAQ-df-KV9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" id="jAQ-df-KV9">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jAQ-df-KV9" id="eb8-TR-5up">
@@ -113,10 +113,13 @@
                             <outlet property="delegate" destination="5t3-w1-bGs" id="bpA-Im-wTi"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="3Cs-od-K8y" id="rdb-J8-li3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-BK-2VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="-418"/>
+            <point key="canvasLocation" x="1857" y="-440"/>
         </scene>
         <!--Title-->
         <scene sceneID="CE2-bP-VZR">
@@ -131,14 +134,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Ut-cs-1wV"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngy-rZ-9mx">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZZv-yd-Osq"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="X0y-2F-fnr"/>
+                                    <barButtonItem title="fav" id="GxU-nK-CSR">
+                                        <connections>
+                                            <action selector="favAction:" destination="L3x-ez-I3h" id="TV8-GM-8TB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3LZ-TO-Dt1"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.79607850309999995" green="0.058823533359999999" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ngy-rZ-9mx" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="2Pv-5o-XVn"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="top" secondItem="fb6-IX-acP" secondAttribute="bottom" id="4JQ-uA-goI"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="5ch-8S-4fm"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="top" secondItem="fb6-IX-acP" secondAttribute="bottom" id="6y4-f2-JPt"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="9YC-kS-FcJ"/>
-                            <constraint firstItem="Ife-aW-RD2" firstAttribute="top" secondItem="5Ut-cs-1wV" secondAttribute="bottom" id="eui-OV-JVg"/>
+                            <constraint firstItem="Ife-aW-RD2" firstAttribute="top" secondItem="ngy-rZ-9mx" secondAttribute="bottom" id="T1I-Ez-cpl"/>
+                            <constraint firstAttribute="trailing" secondItem="ngy-rZ-9mx" secondAttribute="trailing" id="Wnd-oc-tsw"/>
+                            <constraint firstItem="Ife-aW-RD2" firstAttribute="top" secondItem="5Ut-cs-1wV" secondAttribute="bottom" constant="44" id="eui-OV-JVg"/>
                             <constraint firstAttribute="trailing" secondItem="5Ut-cs-1wV" secondAttribute="trailing" id="k6t-dk-7Jv"/>
                             <constraint firstAttribute="trailing" secondItem="5Ut-cs-1wV" secondAttribute="trailing" id="kkE-rK-JVs"/>
                         </constraints>
@@ -157,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bac-KZ-KHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="322"/>
+            <point key="canvasLocation" x="2726" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U9e-8m-5a0">
