@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallpaperCell" id="Swo-sR-ysJ" customClass="WallpaperCollectionViewCell" customModule="RedWall" customModuleProvider="target">
-                                <rect key="frame" x="88" y="8" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="8" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="997.60000000000002" y="53.523238380809602"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Title-->
         <scene sceneID="CE2-bP-VZR">
             <objects>
                 <viewController id="L3x-ez-I3h" customClass="DetailViewController" customModule="RedWall" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,47 +96,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcL-Ff-3aL">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="7NU-iT-I0g"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="save" id="P5i-tU-QD9">
-                                        <connections>
-                                            <action selector="saveImageBtn:" destination="L3x-ez-I3h" id="6S3-fm-S2G"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Ut-cs-1wV"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5Ut-cs-1wV" firstAttribute="top" secondItem="fb6-IX-acP" secondAttribute="bottom" id="4JQ-uA-goI"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="5ch-8S-4fm"/>
-                            <constraint firstAttribute="trailing" secondItem="OcL-Ff-3aL" secondAttribute="trailing" id="6Nn-pm-47S"/>
                             <constraint firstItem="5Ut-cs-1wV" firstAttribute="top" secondItem="fb6-IX-acP" secondAttribute="bottom" id="6y4-f2-JPt"/>
-                            <constraint firstItem="Ife-aW-RD2" firstAttribute="top" secondItem="OcL-Ff-3aL" secondAttribute="bottom" id="8aJ-72-Sgl"/>
-                            <constraint firstItem="OcL-Ff-3aL" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="DSq-TF-thn"/>
-                            <constraint firstItem="OcL-Ff-3aL" firstAttribute="top" secondItem="5Ut-cs-1wV" secondAttribute="bottom" id="a2Z-im-bLZ"/>
+                            <constraint firstItem="5Ut-cs-1wV" firstAttribute="leading" secondItem="Afh-O9-uyu" secondAttribute="leading" id="9YC-kS-FcJ"/>
+                            <constraint firstItem="Ife-aW-RD2" firstAttribute="top" secondItem="5Ut-cs-1wV" secondAttribute="bottom" id="eui-OV-JVg"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ut-cs-1wV" secondAttribute="trailing" id="k6t-dk-7Jv"/>
                             <constraint firstAttribute="trailing" secondItem="5Ut-cs-1wV" secondAttribute="trailing" id="kkE-rK-JVs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="i4z-Zh-DEl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8Ld-M3-fTb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveImageBtn:" destination="L3x-ez-I3h" id="jdO-9N-iou"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="DetailViewImageViewController" destination="5Ut-cs-1wV" id="9fz-s0-U9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bac-KZ-KHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2050" y="54"/>
+            <point key="canvasLocation" x="2048.8000000000002" y="53.523238380809602"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U9e-8m-5a0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PK4-Vh-k8F" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uJa-gi-hvN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uJa-gi-hvN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.79607850309999995" green="0.058823533359999999" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
