@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WallpaperPost {
+class WallpaperPost : NSObject, NSCoding {
     var id: String = ""
     var author: String = ""
     var thumbnailURL: String = ""
@@ -24,6 +24,29 @@ class WallpaperPost {
         self.ups = ups
         self.downs = downs
     }
+    
+    required init(coder aDecoder: NSCoder) {
+        
+        self.id = aDecoder.decodeObject(forKey: "id") as! String;
+        self.author = aDecoder.decodeObject(forKey: "author") as! String;
+        self.thumbnailURL = aDecoder.decodeObject(forKey: "thumbnailURL") as! String;
+        self.imgURL = aDecoder.decodeObject(forKey: "id") as! String;
+        self.ups = aDecoder.decodeObject(forKey: "ups") as! Int;
+        self.downs = aDecoder.decodeObject(forKey: "downs") as! Int;
+    }
+    
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.id, forKey: "id");
+        aCoder.encode(self.author, forKey: "author");
+        aCoder.encode(self.thumbnailURL, forKey: "thumbnailURL");
+        aCoder.encode(self.imgURL, forKey: "imgURL");
+        aCoder.encode(self.ups, forKey: "ups");
+        aCoder.encode(self.downs, forKey: "downs");
+    }
+    
+    
+    
     
     convenience init(copies wallpaperPost: WallpaperPost) {
         self.init(id: wallpaperPost.id, author: wallpaperPost.author, thumbnailURL: wallpaperPost.thumbnailURL, imgURL: wallpaperPost.imgURL, ups: wallpaperPost.ups, downs: wallpaperPost.downs)

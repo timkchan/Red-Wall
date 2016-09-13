@@ -10,7 +10,7 @@
         <scene sceneID="C65-8t-SIj">
             <objects>
                 <collectionViewController id="M2S-7Q-Ibl" customClass="WallpaperCollectionViewController" customModule="RedWall" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="DXy-3a-rsK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DXy-3a-rsK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallpaperCell" id="Swo-sR-ysJ" customClass="WallpaperCollectionViewCell" customModule="RedWall" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="8" width="200" height="200"/>
+                                <rect key="frame" x="88" y="8" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -75,7 +75,13 @@
                             <outlet property="delegate" destination="M2S-7Q-Ibl" id="8s3-f0-2me"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Red Wall" id="lzo-Wm-kAp"/>
+                    <navigationItem key="navigationItem" title="Red Wall" id="lzo-Wm-kAp">
+                        <barButtonItem key="rightBarButtonItem" title="Favourite" id="Ld7-07-wZ8">
+                            <connections>
+                                <segue destination="5t3-w1-bGs" kind="show" id="qRf-Yb-f8m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="L3x-ez-I3h" kind="show" identifier="ShowDetailViewSegue" id="HW9-rI-cfg"/>
                     </connections>
@@ -83,6 +89,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqg-kw-hVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="997.60000000000002" y="53.523238380809602"/>
+        </scene>
+        <!--Fav Table View Controller-->
+        <scene sceneID="Oy5-30-aAQ">
+            <objects>
+                <tableViewController id="5t3-w1-bGs" customClass="FavTableViewController" customModule="RedWall" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Cs-od-K8y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jAQ-df-KV9">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jAQ-df-KV9" id="eb8-TR-5up">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5t3-w1-bGs" id="Eof-yh-4y9"/>
+                            <outlet property="delegate" destination="5t3-w1-bGs" id="bpA-Im-wTi"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-BK-2VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="-418"/>
         </scene>
         <!--Title-->
         <scene sceneID="CE2-bP-VZR">
@@ -123,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bac-KZ-KHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="53.523238380809602"/>
+            <point key="canvasLocation" x="1927" y="322"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U9e-8m-5a0">

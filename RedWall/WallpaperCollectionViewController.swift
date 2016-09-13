@@ -11,6 +11,9 @@ import CoreData
 
 class WallpaperCollectionViewController: UICollectionViewController {
     
+    // Faved posts
+    var favedPosts = [WallpaperPost]()
+    
     // Data source
     var bank = [WallpaperPost]()
     
@@ -49,6 +52,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
     private struct Storyboard {
         static let CellIdentifier = "WallpaperCell"
         static let ShowDetailViewSegue = "ShowDetailViewSegue"
+        static let ShowFavViewSegue = "ShowFavViewSegue"
     }
     
     // Load Cells
@@ -70,10 +74,29 @@ class WallpaperCollectionViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondVC: DetailViewController = segue.destination as! DetailViewController
-        secondVC.post = sender as! WallpaperPost
+        if segue.identifier == "ShowDetailViewSegue" {
+            let secondVC: DetailViewController = segue.destination as! DetailViewController
+            secondVC.post = sender as! WallpaperPost
+        }
+        
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Function to fetch JSON data and parse it in to bank of posts.
     func populateBank() {
         // Fetch Reddit JSON content
