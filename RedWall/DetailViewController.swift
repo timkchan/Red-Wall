@@ -10,16 +10,22 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // Place holder for the corresponding wall paper post form bank (get transferred to here from segue)
+    var post: WallpaperPost!
+    
+    // Place holder for the wallpaper
     var fullResImage: UIImage? = nil
     
     @IBOutlet weak var DetailViewImageViewController: UIImageView!
-        
+    
+    // Action to save wallpaper to camera roll
     @IBAction func saveImageBtn(_ sender: AnyObject) {
         if fullResImage != nil {
             UIImageWriteToSavedPhotosAlbum(fullResImage!, self, #selector(imageSaved), nil)
         }
     }
     
+    // Function to prompt user when wallpaper has been saved
     func imageSaved(image: UIImage!, didFinishSavingWithError: NSError!, contextInfo:UnsafeRawPointer) {
         print("Saved")
         let alertController = UIAlertController(title: "Downloaded", message: "Image is saved in camera roll.", preferredStyle: UIAlertControllerStyle.alert)
@@ -30,29 +36,24 @@ class DetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
-    var post: WallpaperPost!
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set Nav bar title (Author of post)
         title = post.author
         
-        
+        // Show image
         let url = NSURL(string: post.imgURL)
         if let data = NSData(contentsOf:url as! URL) {
             fullResImage = UIImage(data: data as Data)
             DetailViewImageViewController.image = fullResImage
         }
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

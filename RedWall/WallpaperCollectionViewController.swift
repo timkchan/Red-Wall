@@ -24,7 +24,58 @@ class WallpaperCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Fetch Json data and filled bank
+        populateBank()
         
+        // Setup the layout of collection view
+        let width = (collectionView!.frame.width - leftAndRightPaddings * (numberOfItemsPerRow + 1)) / numberOfItemsPerRow
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width - heightAdjustment)
+    }
+    
+    
+    // MARK: - UICollectionView OVERRIDES
+    // Number of sections.
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    // Number of items in each section.
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.bank.count
+    }
+    
+    // For quick reference back to the cell and segue
+    private struct Storyboard {
+        static let CellIdentifier = "WallpaperCell"
+        static let ShowDetailViewSegue = "ShowDetailViewSegue"
+    }
+    
+    // Load Cells
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as! WallpaperCollectionViewCell
+        
+        if bank.count > 0 && cell.wallpaperPost == nil {
+            cell.wallpaperPost = self.bank[indexPath.row]
+        }
+        return cell
+    }
+    
+    
+    // MARK: - UICollectionViewDelegate
+    // Load Detail View when an image is clicked.
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let post = bank[indexPath.row]
+        self.performSegue(withIdentifier: Storyboard.ShowDetailViewSegue, sender: post)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondVC: DetailViewController = segue.destination as! DetailViewController
+        secondVC.post = sender as! WallpaperPost
+    }
+
+    // Function to fetch JSON data and parse it in to bank of posts.
+    func populateBank() {
         // Fetch Reddit JSON content
         let sourceURL = URL(string: "https://www.reddit.com/r/wallpapers/.json")
         let task = URLSession.shared.dataTask(with: sourceURL!) { (data, response, error) in
@@ -34,11 +85,11 @@ class WallpaperCollectionViewController: UICollectionViewController {
                 if let URLConent = data {
                     do {
                         let jsonResult = try JSONSerialization.jsonObject(with: URLConent, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-
+                        
                         if let jsonData = jsonResult["data"] as? NSDictionary {
                             if let items = jsonData["children"] as? NSArray {
                                 for item in items {
-
+                                    
                                     let itemD:NSDictionary = (item as? NSDictionary)!
                                     
                                     // Finally get down to the post.
@@ -57,9 +108,12 @@ class WallpaperCollectionViewController: UICollectionViewController {
                                     
                                     print("------------------------------------")
                                     wp.toString()
-                                    
                                 }
-                                self.collectionView?.reloadData()
+                                
+                                // Step out to the main thread to reload (Fixed long load bug).
+                                DispatchQueue.main.async {
+                                    self.collectionView?.reloadData()
+                                }
                             }
                         }
                     } catch {
@@ -68,54 +122,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
                 }
             }
         }
-        
         task.resume()
-        
-        // Setup the layout of collection view
-        let width = (collectionView!.frame.width - leftAndRightPaddings * (numberOfItemsPerRow + 1)) / numberOfItemsPerRow
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width - heightAdjustment)
     }
-    
-    
-    // MARK: - UICollectionView Data source
-    // Number of sections.
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    // Number of items in each section.
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.bank.count
-    }
-    
-    // For quick reference back to the cell and segue
-    private struct Storyboard {
-        static let CellIdentifier = "WallpaperCell"
-        static let ShowDetailViewSegue = "ShowDetailViewSegue"
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as! WallpaperCollectionViewCell
-        print("XXX")
-        
-        if bank.count > 0 && cell.wallpaperPost == nil {
-            cell.wallpaperPost = self.bank[indexPath.row]
-        }
-        
-        return cell
-    }
-    
-    // MARK: - UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let post = bank[indexPath.row]
-        self.performSegue(withIdentifier: Storyboard.ShowDetailViewSegue, sender: post)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondVC: DetailViewController = segue.destination as! DetailViewController
-        secondVC.post = sender as! WallpaperPost
-    }
-
     
 }
