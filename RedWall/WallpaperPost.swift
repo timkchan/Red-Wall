@@ -30,9 +30,14 @@ class WallpaperPost : NSObject, NSCoding {
         self.id = aDecoder.decodeObject(forKey: "id") as! String;
         self.author = aDecoder.decodeObject(forKey: "author") as! String;
         self.thumbnailURL = aDecoder.decodeObject(forKey: "thumbnailURL") as! String;
-        self.imgURL = aDecoder.decodeObject(forKey: "id") as! String;
-        self.ups = aDecoder.decodeObject(forKey: "ups") as! Int;
-        self.downs = aDecoder.decodeObject(forKey: "downs") as! Int;
+        self.imgURL = aDecoder.decodeObject(forKey: "imgURL") as! String;
+        if let uu = aDecoder.decodeObject(forKey: "ups") {
+            self.ups = uu as! Int
+        }
+        if let dd = aDecoder.decodeObject(forKey: "downs") {
+            self.downs = dd as! Int
+        }
+        
     }
     
     

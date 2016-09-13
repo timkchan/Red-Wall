@@ -11,6 +11,7 @@ import CoreData
 
 // Faved Lst
 var favedPosts = [WallpaperPost]()
+var userDefaults = UserDefaults.standard
 
 class WallpaperCollectionViewController: UICollectionViewController {
     
@@ -26,6 +27,9 @@ class WallpaperCollectionViewController: UICollectionViewController {
     // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load saved Fav Lst into favedPosts
+        loadSavedFavLst()
         
         // Fetch Json data and filled bank
         populateBank()
@@ -82,9 +86,12 @@ class WallpaperCollectionViewController: UICollectionViewController {
     }
 
     
-    
-    
-    
+    // Function to load saved Fav Lst into favedPosts
+    func loadSavedFavLst() {
+        if userDefaults.object(forKey: "favs") != nil {
+            favedPosts = NSKeyedUnarchiver.unarchiveObject(with: (userDefaults.object(forKey: "favs") as! NSData) as Data) as! [WallpaperPost]
+        }
+    }
     
     
     // Function to fetch JSON data and parse it in to bank of posts.

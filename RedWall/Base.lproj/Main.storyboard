@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallpaperCell" id="Swo-sR-ysJ" customClass="WallpaperCollectionViewCell" customModule="RedWall" customModuleProvider="target">
-                                <rect key="frame" x="88" y="8" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="8" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -103,7 +103,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jAQ-df-KV9" id="eb8-TR-5up">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -115,6 +115,7 @@
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="3Cs-od-K8y" id="rdb-J8-li3"/>
+                        <segue destination="L3x-ez-I3h" kind="show" identifier="ShowTBDetailViewSegue" id="UOA-iG-BLP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-BK-2VG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,4 +209,7 @@
     <resources>
         <image name="temp.png" width="467" height="241"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UOA-iG-BLP"/>
+    </inferredMetricsTieBreakers>
 </document>

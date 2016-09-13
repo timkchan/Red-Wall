@@ -14,8 +14,16 @@ class DetailViewController: UIViewController {
     var post: WallpaperPost!
     
     @IBAction func favAction(_ sender: AnyObject) {
+        
+        // Add post if not added
         if !favedPosts.contains(post) {
+            
+            // Add post
             favedPosts.append(post)
+            
+            // Save array after addition
+            userDefaults.setValue(NSKeyedArchiver.archivedData(withRootObject: favedPosts), forKey: "favs")
+            userDefaults.synchronize()
         }
         dump(favedPosts)
     }

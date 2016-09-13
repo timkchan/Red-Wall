@@ -13,8 +13,6 @@ class FavTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(favedPosts.count)
-        
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,10 +33,23 @@ class FavTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        cell.textLabel?.text = favedPosts[indexPath.row].id
+        cell.textLabel?.text = favedPosts[indexPath.row].author + " - " + favedPosts[indexPath.row].id
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = favedPosts[indexPath.row]
+        post.toString()
+        self.performSegue(withIdentifier: "ShowTBDetailViewSegue", sender: post)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowTBDetailViewSegue" {
+            let secondVC: DetailViewController = segue.destination as! DetailViewController
+            secondVC.post = sender as! WallpaperPost
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -48,17 +59,21 @@ class FavTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            favedPosts.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // Save array after deletion
+            userDefaults.setValue(NSKeyedArchiver.archivedData(withRootObject: favedPosts), forKey: "favs")
+            userDefaults.synchronize()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -75,14 +90,5 @@ class FavTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
