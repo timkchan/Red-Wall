@@ -17,7 +17,6 @@
 		D8FADD7C1D8695A300B87695 /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FADD7B1D8695A300B87695 /* temp.png */; };
 		D8FADD7E1D86B07E00B87695 /* WallpaperPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */; };
 		D8FADD801D86BFDC00B87695 /* WallpaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FADD7F1D86BFDC00B87695 /* WallpaperCollectionViewCell.swift */; };
-		D8FADDA51D87319700B87695 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FADDA41D87319700B87695 /* Post+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		D8FADD7B1D8695A300B87695 /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp.png; sourceTree = "<group>"; };
 		D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperPost.swift; sourceTree = "<group>"; };
 		D8FADD7F1D86BFDC00B87695 /* WallpaperCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCollectionViewCell.swift; sourceTree = "<group>"; };
-		D8FADDA41D87319700B87695 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +70,11 @@
 				D8FADD7F1D86BFDC00B87695 /* WallpaperCollectionViewCell.swift */,
 				D8A8CC861D868E3600CFE904 /* Main.storyboard */,
 				D88A45A41D875A20003068F2 /* DetailViewController.swift */,
+				D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */,
 				D8A8CC8C1D868E3600CFE904 /* Assets.xcassets */,
 				D8A8CC8E1D868E3600CFE904 /* LaunchScreen.storyboard */,
 				D8A8CC911D868E3600CFE904 /* Info.plist */,
 				D8A8CC891D868E3600CFE904 /* RedWall.xcdatamodeld */,
-				D8FADD7D1D86B07E00B87695 /* WallpaperPost.swift */,
-				D8FADDA41D87319700B87695 /* Post+CoreDataClass.swift */,
 			);
 			path = RedWall;
 			sourceTree = "<group>";
@@ -165,7 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FADD7E1D86B07E00B87695 /* WallpaperPost.swift in Sources */,
-				D8FADDA51D87319700B87695 /* Post+CoreDataClass.swift in Sources */,
 				D8FADD801D86BFDC00B87695 /* WallpaperCollectionViewCell.swift in Sources */,
 				D8A8CC8B1D868E3600CFE904 /* RedWall.xcdatamodeld in Sources */,
 				D8A8CC981D868FB300CFE904 /* WallpaperCollectionViewController.swift in Sources */,

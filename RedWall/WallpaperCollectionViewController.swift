@@ -50,44 +50,16 @@ class WallpaperCollectionViewController: UICollectionViewController {
                                     let ups = post["ups"] as! Int
                                     let downs = post["downs"] as! Int
                                     let imgURL = (((((post["preview"] as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
-                                        
+                                    
+                                    // Saving each post into the bank.
                                     let wp = WallpaperPost(id: id, author: author, thumbnailURL: thumbnailURL, imgURL: imgURL, ups: ups, downs: downs)
-                                    
-                                    
+                                    self.bank.append(wp)
                                     
                                     print("------------------------------------")
                                     wp.toString()
                                     
-                                    
-                                    
-                                    
-//                                    let newPost = NSEntityDescription.insertNewObject(forEntityName: "Post", into: context)
-//                                    
-//                                    newPost.setValue(id, forKey: "id")
-//                                    
-//                                    do {
-//                                        try context.save()
-//                                        print("saved")
-//                                    } catch {
-//                                        print("error when saving into CoreData")
-//                                    }
-                                
-                                    self.bank.append(wp)
-                                    
-                                    
-//                                    var indexes = [IndexPath]()
-//                                    for i in 0 ..< self.bank.count {
-//                                        indexes.append(IndexPath(row: i, section: 0))
-//                                    }
-//                                    self.collectionView?.performBatchUpdates({
-//                                        self.bank.append(wp)
-//                                        self.collectionView?.insertItems(at: indexes)
-//                                        }, completion: nil)
-                                    
-
                                 }
                                 self.collectionView?.reloadData()
-                                
                             }
                         }
                     } catch {
@@ -99,14 +71,10 @@ class WallpaperCollectionViewController: UICollectionViewController {
         
         task.resume()
         
-        
         // Setup the layout of collection view
         let width = (collectionView!.frame.width - leftAndRightPaddings * (numberOfItemsPerRow + 1)) / numberOfItemsPerRow
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width - heightAdjustment)
-        
-        
-        
     }
     
     
@@ -118,9 +86,10 @@ class WallpaperCollectionViewController: UICollectionViewController {
     
     // Number of items in each section.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.bank.count // TK: to be modified.
+        return self.bank.count
     }
     
+    // For quick reference back to the cell and segue
     private struct Storyboard {
         static let CellIdentifier = "WallpaperCell"
         static let ShowDetailViewSegue = "ShowDetailViewSegue"
@@ -130,7 +99,7 @@ class WallpaperCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as! WallpaperCollectionViewCell
         print("XXX")
         
-        if bank.count > 0 {
+        if bank.count > 0 && cell.wallpaperPost == nil {
             cell.wallpaperPost = self.bank[indexPath.row]
         }
         
