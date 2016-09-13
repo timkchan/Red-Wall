@@ -16,8 +16,18 @@ class DetailViewController: UIViewController {
         
     @IBAction func saveImageBtn(_ sender: AnyObject) {
         if fullResImage != nil {
-            UIImageWriteToSavedPhotosAlbum(fullResImage!, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(fullResImage!, self, #selector(imageSaved), nil)
         }
+    }
+    
+    func imageSaved(image: UIImage!, didFinishSavingWithError: NSError!, contextInfo:UnsafeRawPointer) {
+        print("Saved")
+        let alertController = UIAlertController(title: "Downloaded", message: "Image is saved in camera roll.", preferredStyle: UIAlertControllerStyle.alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("Dismiss")
+        }
+        alertController.addAction(dismissAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     
@@ -25,7 +35,6 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = post.author
         
         
