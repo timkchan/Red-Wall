@@ -34,6 +34,12 @@ class WallpaperCollectionViewController: UICollectionViewController {
         // Fetch Json data and filled bank
         populateBank()
         
+//        if UIDevice.current.orientation == UIDeviceOrientation(rawValue: 3) || UIDevice.current.orientation == UIDeviceOrientation(rawValue: 4){
+//            numberOfItemsPerRow = 3.0
+//        } else {
+//            numberOfItemsPerRow = 2.0
+//        }
+        
         // Setup the layout of collection view
         let width = (collectionView!.frame.width - leftAndRightPaddings * (numberOfItemsPerRow + 1)) / numberOfItemsPerRow
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -120,7 +126,12 @@ class WallpaperCollectionViewController: UICollectionViewController {
                                     let thumbnailURL = post["thumbnail"] as! String
                                     let ups = post["ups"] as! Int
                                     let downs = post["downs"] as! Int
-                                    let imgURL = (((((post["preview"] as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
+                                    var imgURL = "http://photography.timkchan.com/images/s/haley/034.jpg"
+                                    if let preview = post["preview"] {
+                                        
+                                        imgURL = (((((preview as? NSDictionary)?["images"] as? NSArray)?[0] as? NSDictionary)?["source"] as? NSDictionary)?["url"]) as! String
+                                        
+                                    }
                                     
                                     // Saving each post into the bank.
                                     let wp = WallpaperPost(id: id, author: author, thumbnailURL: thumbnailURL, imgURL: imgURL, ups: ups, downs: downs)

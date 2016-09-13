@@ -37,9 +37,7 @@ class WallpaperPost : NSObject, NSCoding {
         if let dd = aDecoder.decodeObject(forKey: "downs") {
             self.downs = dd as! Int
         }
-        
     }
-    
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: "id");
@@ -49,9 +47,6 @@ class WallpaperPost : NSObject, NSCoding {
         aCoder.encode(self.ups, forKey: "ups");
         aCoder.encode(self.downs, forKey: "downs");
     }
-    
-    
-    
     
     convenience init(copies wallpaperPost: WallpaperPost) {
         self.init(id: wallpaperPost.id, author: wallpaperPost.author, thumbnailURL: wallpaperPost.thumbnailURL, imgURL: wallpaperPost.imgURL, ups: wallpaperPost.ups, downs: wallpaperPost.downs)

@@ -24,10 +24,14 @@ class DetailViewController: UIViewController {
             // Save array after addition
             userDefaults.setValue(NSKeyedArchiver.archivedData(withRootObject: favedPosts), forKey: "favs")
             userDefaults.synchronize()
+            
+            prompt(title: "Fav'ed!", message: "Image is saved in the favourite list.")
+        } else {
+            prompt(title: "Fav'ed!", message: "Image has previouly been faved.")
         }
         dump(favedPosts)
     }
-    
+
     
     // Place holder for the wallpaper
     var fullResImage: UIImage? = nil
@@ -71,14 +75,14 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Function to prompt user
+    func prompt(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("Dismiss")
+        }
+        alertController.addAction(dismissAction)
+        self.present(alertController, animated: true, completion: nil)
     }
-    */
 
 }
