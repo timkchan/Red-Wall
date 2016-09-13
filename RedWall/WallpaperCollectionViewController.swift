@@ -34,12 +34,6 @@ class WallpaperCollectionViewController: UICollectionViewController {
         // Fetch Json data and filled bank
         populateBank()
         
-//        if UIDevice.current.orientation == UIDeviceOrientation(rawValue: 3) || UIDevice.current.orientation == UIDeviceOrientation(rawValue: 4){
-//            numberOfItemsPerRow = 3.0
-//        } else {
-//            numberOfItemsPerRow = 2.0
-//        }
-        
         // Setup the layout of collection view
         let width = (collectionView!.frame.width - leftAndRightPaddings * (numberOfItemsPerRow + 1)) / numberOfItemsPerRow
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -88,7 +82,6 @@ class WallpaperCollectionViewController: UICollectionViewController {
             let secondVC: DetailViewController = segue.destination as! DetailViewController
             secondVC.post = sender as! WallpaperPost
         }
-        
     }
 
     
